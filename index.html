@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>نوس · NOUS</title>
+<meta name="description" content="نوس، بوابة تجمع مصممين بنظام واحد. ابدأ طلبك بالغرافيك دزاين، وشوف المعرض والأرشيف.">
+<meta name="theme-color" content="#060808">
+<meta property="og:title" content="نوس · البوابة مفتوحة">
+<meta property="og:description" content="Meaning begins where sight ends.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Reem+Kufi:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/css/nous.css">
+</head>
+<body data-state="closed">
+
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="neb" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- طبقة الوثيقة: نفس إطار الحملة -->
+<div class="doc" aria-hidden="true">
+  <i class="cn c-tl"></i><i class="cn c-tr"></i><i class="cn c-bl"></i><i class="cn c-br"></i>
+  <span class="doc-file en" id="docFile">FILE 00 · NETWORK</span>
+  <span class="doc-arc en">NOUS / ARCHIVE</span>
+  <span class="doc-geo en">36.34° N · 43.13° E</span>
+  <span class="doc-tc en" id="tc">00:00:00:00</span>
+</div>
+
+<!-- المقدمة: البوابة مغلقة ثم تنفتح -->
+<div id="intro" class="intro" aria-hidden="true">
+  <div class="intro-mark" id="introMark"></div>
+  <p class="intro-line"><span class="a">الأرشيف مغلق</span><span class="b">البوابة مفتوحة</span></p>
+</div>
+
+<header class="top">
+  <a class="brand" href="#home" aria-label="نوس، الرئيسية"><span class="brand-mk" id="brandMk"></span><b>نوس</b><span class="en">NOUS</span></a>
+  <nav class="nav" aria-label="التنقل">
+    <a href="#home" data-nav="home">الشبكة</a>
+    <a href="#works" data-nav="works">المعرض</a>
+    <a href="#archive" data-nav="archive">الأرشيف</a>
+    <a href="#join" data-nav="join">انضم</a>
+    <a href="#about" data-nav="about">عن نوس</a>
+  </nav>
+  <a class="btn cta" href="#order">ابدأ طلبك</a>
+</header>
+
+<main id="main">
+
+<!-- ============ الشبكة ============ -->
+<section class="view map-view" id="v-home" data-file="FILE 00 · NETWORK" aria-label="خريطة شبكة نوس">
+  <div id="scene">
+    <div id="world">
+      <svg id="net" aria-hidden="true"><g id="orbits"></g><g id="links"></g></svg>
+      <button id="core" class="core" type="button" aria-label="نوس، المرجع. افتح تفاصيل الشبكة">
+        <i class="rg a"></i><i class="rg b"></i><span id="coreMk"></span>
+      </button>
+      <div id="nodes"></div>
+    </div>
+  </div>
+  <div class="map-hud">
+    <div class="chip" id="liveChip"><i></i><span></span></div>
+  </div>
+  <div class="map-foot">
+    <p class="tag en">Meaning begins where sight ends.</p>
+    <p class="hint"><i></i>اضغط على البوابة أو أي فرع</p>
+  </div>
+</section>
+
+<!-- ============ المعرض ============ -->
+<section class="view page" id="v-works" data-file="FILE 01 · SELECTED WORK" hidden>
+  <div class="wrap">
+    <header class="ph">
+      <p class="eyebrow en">SELECTED WORK</p>
+      <h1>المعرض</h1>
+      <p class="lead">كل عمل باسم صاحبه واسم مصممه. اختار التصنيف، وإذا عجبك أسلوب، اطلب شي مثله بضغطة.</p>
+    </header>
+    <div class="filters">
+      <div class="chips" id="catChips" role="group" aria-label="التصنيف"></div>
+      <div class="chips sub" id="desChips" role="group" aria-label="المصمم"></div>
+    </div>
+    <div class="grid" id="worksGrid"></div>
+
+    <section class="block">
+      <p class="eyebrow en">CLIENTS & BRANDS</p>
+      <h2>الزبائن والعلامات</h2>
+      <div class="chips" id="clientChips" role="group" aria-label="تصنيف الزبائن"></div>
+      <ul class="clients" id="clientsList"></ul>
+    </section>
+
+    <section class="block" id="testiBlock" hidden>
+      <p class="eyebrow en">IN THEIR WORDS</p>
+      <h2>آراء الزبائن</h2>
+      <div class="testi" id="testiList"></div>
+    </section>
+  </div>
+</section>
+
+<!-- ============ الأرشيف ============ -->
+<section class="view page" id="v-archive" data-file="FILE 02 · ARCHIVE" hidden>
+  <div class="wrap">
+    <header class="ph">
+      <p class="eyebrow en">THE ARCHIVE · BEFORE FORM</p>
+      <h1>ما قبل الشكل</h1>
+      <p class="lead">قبل ما ياخذ أي شي شكله، كان هنا أرشيف. ستة ملفات، كل واحد يُفتح بوقته.</p>
+    </header>
+    <div class="files" id="filesGrid"></div>
+    <section class="block reveal" id="revealBlock" hidden>
+      <p class="eyebrow en">DECLASSIFIED</p>
+      <h2>الأقسام الأربعة</h2>
+      <p class="lead">كل قسم بالأرشيف فرع حقيقي بالشبكة.</p>
+      <ul class="rows" id="revealRows"></ul>
+    </section>
+  </div>
+</section>
+
+<!-- ============ ابدأ طلبك ============ -->
+<section class="view page" id="v-order" data-file="FILE 03 · YOUR BRIEF" hidden>
+  <div class="wrap">
+    <header class="ph">
+      <p class="eyebrow en">YOUR BRIEF</p>
+      <h1>ابدأ طلبك</h1>
+      <p class="lead">بدقيقتين. جاوب على قد ما تعرف، والباقي نكمله بالمحادثة. وبالأخير يوصلنا طلبك مرتب.</p>
+    </header>
+
+    <ol class="steps4">
+      <li><b>الطلب</b><span>يدخل من نوس ويتوجه للقسم</span></li>
+      <li><b>المقدم</b><span>نصف المبلغ ويبدأ الشغل</span></li>
+      <li><b>المراجعة</b><span>كل تسليم يُراجع قبل ما يوصلك</span></li>
+      <li><b>الاستلام</b><span>جولتين تعديل، وتستلم ملفك نظيف</span></li>
+    </ol>
+
+    <div class="order">
+      <form class="form" id="orderForm" novalidate>
+        <fieldset class="st"><legend><i>01</i>أي فرع؟</legend>
+          <div class="chips" data-f="branch" role="radiogroup"></div>
+          <p class="wait" id="waitNote" hidden>الفرع لسه ما فتح. طلبك ينحفظ بقائمة الانتظار، وأول ما يفتح نرجع لك.</p>
+        </fieldset>
+        <fieldset class="st"><legend><i>02</i>شنو تحتاج؟</legend>
+          <p class="hint2">اختار وحدة أو أكثر.</p>
+          <div class="svc" data-f="services"></div>
+        </fieldset>
+        <fieldset class="st"><legend><i>03</i>احچيلي عن مشروعك</legend>
+          <label class="fl"><span>اسم المشروع أو العلامة</span><input class="field" name="project" autocomplete="organization"></label>
+          <label class="fl"><span>المجال</span><input class="field" name="field" placeholder="مقهى، عيادة، متجر ملابس…"></label>
+          <label class="fl"><span>الفكرة <em>اختياري</em></span><textarea class="field" name="brief" rows="4" placeholder="اكتب فكرتك، وأي مرجع يعجبك"></textarea></label>
+          <label class="fl"><span>لمن موجّه؟ <em>اختياري</em></span><input class="field" name="audience"></label>
+        </fieldset>
+        <fieldset class="st"><legend><i>04</i>شلون تتخيله؟</legend>
+          <p class="lbl">الطابع</p>
+          <div class="chips" data-f="mood" role="radiogroup"></div>
+          <p class="lbl">اللون</p>
+          <div class="swatches" data-f="color" role="radiogroup"></div>
+        </fieldset>
+        <fieldset class="st"><legend><i>05</i>ايمتى تريده؟</legend>
+          <div class="chips" data-f="when" role="radiogroup"></div>
+          <div class="two">
+            <label class="fl"><span>تاريخ الاستلام <em>اختياري</em></span><input class="field" type="date" name="date"></label>
+            <label class="fl"><span>الميزانية التقريبية <em>اختياري</em></span>
+              <select class="field" name="budget"><option value="">ما محدد</option><option>أقل من 50,000 دينار</option><option>50,000 إلى 100,000</option><option>100,000 إلى 250,000</option><option>أكثر من 250,000</option></select>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="st" id="desStep"><legend><i>06</i>منو يصمملك؟</legend>
+          <p class="hint2">الترتيب حسب الزخم: الأعمال المنجزة، سرعة الرد، والالتزام بالموعد. أو خلي نوس ترشحلك.</p>
+          <div class="des" data-f="designer" role="radiogroup"></div>
+        </fieldset>
+        <fieldset class="st"><legend><i>07</i>شلون نوصلك؟</legend>
+          <div class="two">
+            <label class="fl"><span>اسمك</span><input class="field" name="name" autocomplete="name" required></label>
+            <label class="fl"><span>رقم أو معرّف للتواصل</span><input class="field" name="phone" dir="ltr" autocomplete="tel" required></label>
+          </div>
+          <p class="lbl">أفضّل التواصل عبر</p>
+          <div class="chips" data-f="channel" role="radiogroup"></div>
+          <p class="note">معلوماتك تظهر بس بالرسالة اللي تبعثها أنت.</p>
+        </fieldset>
+        <fieldset class="st"><legend><i>08</i>طلبك جاهز</legend>
+          <div class="terms"><span>عربون نصف المبلغ</span><span>جولتين تعديل</span><span>مراجعة قبل التسليم</span><span>تملك التصميم بعد الدفع</span></div>
+          <button class="btn" type="submit">جهّز الطلب</button>
+          <div class="out" id="out" hidden>
+            <pre id="outText"></pre>
+            <div class="out-act">
+              <a class="btn" id="sendWa" href="#" target="_blank" rel="noopener">افتح واتساب والرسالة جاهزة</a>
+              <button class="btn ghostb" type="button" id="copyOut">نسخ الطلب</button>
+              <a class="btn ghostb" id="sendTg" href="#" target="_blank" rel="noopener" hidden>تلگرام</a>
+              <a class="btn ghostb" id="sendIg" href="#" target="_blank" rel="noopener" hidden>إنستغرام</a>
+            </div>
+            <p class="note">زر واتساب يفتح المحادثة والرسالة مكتوبة، وانت تضغط إرسال بس. بتلگرام أو إنستغرام انسخ الطلب والصقه.</p>
+          </div>
+        </fieldset>
+      </form>
+
+      <aside class="board" aria-label="لوحة مشروعك">
+        <div class="board-in">
+          <div class="board-top"><b>لوحة مشروعك</b><span>جاهزية الطلب <em id="pct">0%</em></span></div>
+          <div class="bar"><i id="bar"></i></div>
+          <div class="board-art" id="boardArt"><span id="boardMk"></span></div>
+          <p class="board-name" id="bName">اسم مشروعك</p>
+          <p class="board-svc" id="bSvc">خدماتك تظهر هنا</p>
+          <ul class="rows sm">
+            <li><span>الفرع</span><span id="bBranch">—</span></li>
+            <li><span>الطابع</span><span id="bMood">لسه ما اخترت</span></li>
+            <li><span>الموعد</span><span id="bWhen">—</span></li>
+            <li><span>المصمم</span><span id="bDes">ترشيح نوس</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ انضم ============ -->
+<section class="view page" id="v-join" data-file="FILE 04 · MEMBERSHIP" hidden>
+  <div class="wrap narrow">
+    <header class="ph">
+      <p class="eyebrow en">JOIN THE NETWORK</p>
+      <h1>انضم لشبكة نوس</h1>
+      <p class="lead">تبقى حر بشغلك ومشروعك. انتماؤك لنوس رسمي وبنظام واضح، وطلبات تجيك جاهزة.</p>
+    </header>
+    <ul class="pillars">
+      <li><b>عضوية بمستوى واحد</b><span>كل مصمم عضو تحت قسم موجود. ماكو طبقات ولا شركاء فوق شركاء.</span></li>
+      <li><b>علامتك تبقى إلك</b><span>إذا عندك مشروع باسمك، يظهر ببطاقتك ويه زر «زيارة موقعه».</span></li>
+      <li><b>الزبون يختار</b><span>اسمك يظهر بصفحة القسم، والترتيب حسب الزخم مو حسب المعارف. وخانة ثابتة للوجوه الجديدة.</span></li>
+      <li><b>نسبة ثابتة</b><span>السعر حسب الشريحة، مو مفاوضة. حصتك تتحول بعد موافقة الزبون على التسليم.</span></li>
+      <li><b>علامة نوس على العرض</b><span>شغل طلبات نوس تعرضه بعلامتك ويه علامة نوس. الملف المسلّم للزبون يبقى نظيف.</span></li>
+    </ul>
+    <form class="form card" id="joinForm" novalidate>
+      <p class="eyebrow en">APPLICATION</p>
+      <div class="two">
+        <label class="fl"><span>اسمك</span><input class="field" name="name" required></label>
+        <label class="fl"><span>رقم أو معرّف للتواصل</span><input class="field" name="phone" dir="ltr" required></label>
+      </div>
+      <p class="lbl">القسم</p>
+      <div class="chips" data-f="jbranch" role="radiogroup"></div>
+      <p class="lbl">مستواك</p>
+      <div class="chips" data-f="jtier" role="radiogroup"></div>
+      <label class="fl"><span>رابط أعمالك</span><input class="field" name="portfolio" dir="ltr" placeholder="Behance, Instagram, Drive…"></label>
+      <label class="fl"><span>علامتك الخاصة <em>اختياري</em></span><input class="field" name="brand" placeholder="الاسم والرابط إذا موجود"></label>
+      <button class="btn" type="submit">جهّز طلب الانضمام</button>
+      <div class="out" id="jout" hidden><pre id="joutText"></pre>
+        <div class="out-act"><a class="btn" id="jWa" href="#" target="_blank" rel="noopener">ابعثه على واتساب</a><button class="btn ghostb" type="button" id="jCopy">نسخ</button></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ عن نوس ============ -->
+<section class="view page" id="v-about" data-file="FILE 05 · THE ONE WHO LOOKS" hidden>
+  <div class="wrap">
+    <div class="about">
+      <div class="portrait" id="portrait"></div>
+      <div class="about-tx">
+        <p class="eyebrow en">FOUNDER</p>
+        <h1 class="silver en" id="aName"></h1>
+        <p class="tagline en" id="aTag"></p>
+        <p class="skills en" id="aSkills"></p>
+        <p class="lead" id="aBio"></p>
+        <ul class="rows">
+          <li><span>نوس</span><span>البوابة والمرجع</span></li>
+          <li><span>الطلب</span><span>يبدأ من نوس</span></li>
+          <li><span>الدفع</span><span>يمر عبر نوس</span></li>
+          <li><span>الجودة</span><span>مراجعة قبل التسليم</span></li>
+        </ul>
+        <div class="contact" id="contactLinks"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span class="en">NOUS · DESIGN NETWORK</span>
+  <span class="en dim">Meaning begins where sight ends.</span>
+  <span class="dim">© <span id="yr"></span> نوس</span>
+</footer>
+
+<!-- اللوحة الجانبية للشبكة -->
+<aside id="panel" class="panel" aria-hidden="true">
+  <button class="x" id="pclose" type="button" aria-label="إغلاق">×</button>
+  <div id="panelBody"></div>
+</aside>
+
+<!-- نافذة العرض -->
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="x" id="mclose" type="button" aria-label="إغلاق">×</button>
+  <div class="modal-in" id="modalBody"></div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
