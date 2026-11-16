@@ -110,7 +110,7 @@ window.NOUS = {
   campaign: {
     revealed: false,
     files: [
-      { no: '00', title: 'شي ناقص', q: 'ما الذي ينقص هذا الشارع؟', note: 'شيءٌ ما ينقص.', dur: '12.5', branch: null, released: false, video: 'assets/video/file-00.mp4' },
+      { no: '00', title: 'شي ناقص', q: 'ما الذي ينقص هذا الشارع؟', note: 'شيءٌ ما ينقص.', dur: '12.5', branch: null, released: true, video: 'assets/video/file-00.mp4', poster: 'assets/video/file-00.jpg' },
       { no: '01', title: 'قسم الشكل', q: 'من يمنح الأشياء شكلها؟', note: 'كل شيء يصل بلا شكل، ويغادر بهوية.', dur: '15.5', branch: 'graphic', released: false, video: 'assets/video/file-01.mp4' },
       { no: '02', title: 'قسم الضوء', q: 'أين يختبئ النهار؟', note: 'لا يوجد الشيء قبل أن يُضاء.', dur: '15.5', branch: 'photo', released: false, video: 'assets/video/file-02.mp4' },
       { no: '03', title: 'قسم الزمن', q: 'من أوقف كل شيء؟', note: 'الحركة إذنٌ يُمنح.', dur: '17.1', branch: 'motion', released: false, video: 'assets/video/file-03.mp4' },
@@ -119,12 +119,19 @@ window.NOUS = {
     ]
   },
 
+  /* ---- استوديو عَتَبة (صفحة خاصة: nous-gate.github.io/#ataba) ----
+     codeHash: بصمة SHA-256 لرمز الدخول. لتغيير الرمز اطلب من Claude يحدّثها */
+  ataba: {
+    codeHash: '933d5625fce32730ab9f45caf9153120be37501b67a547ba7a814182cbc6909a',
+    hashtags: '#عتبة #خواطر #خواطر_فلسفية #تأملات'
+  },
+
   /* ---- عني ---- */
   about: {
     name: 'AHMED ISMAIL',
     nameAr: 'أحمد إسماعيل',
     tagline: 'Meaning begins where sight ends.',
-    portrait: '',               /* مثال 'assets/img/portrait.png' */
+    portrait: 'assets/img/portrait.jpg',
     skills: ['GRAPHIC DESIGN', 'MOTION', 'AI'],
     bio: 'مصمم غرافيك وموشن ومختص بالذكاء الاصطناعي من الموصل. بنيت نوس حتى تكون بوابة: الزبون يدخل من مكان واحد، ويوصل لمصمم يعرف شغله، ويستلم شي مبني على فكرة مو على قالب.'
   }

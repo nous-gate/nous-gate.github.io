@@ -269,6 +269,63 @@
   </div>
 </section>
 
+<!-- ============ استوديو عَتَبة (خاص) ============ -->
+<section class="view page atba" id="v-ataba" data-file="SIDE BRANCH · ATABA" hidden>
+  <div class="wrap">
+    <div class="atba-lock" id="atbaLock">
+      <svg class="atba-mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="aA2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#b4bdbd"/></linearGradient><linearGradient id="aL2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1d0b"/><stop offset=".5" stop-color="#f0780f"/><stop offset="1" stop-color="#ffc46b"/></linearGradient></defs><path fill="url(#aA2)" d="M13 54 V28 C13 14 22 6 32 6 C42 6 51 14 51 28 V54 Z"/><path fill="url(#aL2)" d="M22 54 V29 C22 22 26 17 32 17 C38 17 42 22 42 29 V54 Z"/><path fill="#ffe9c4" fill-opacity=".85" d="M32 26 L33.4 54 H30.6 Z"/><rect x="9" y="54" width="46" height="3.4" rx="1.7" fill="#b4bdbd"/></svg>
+      <h1 class="silver">عَتَبة</h1>
+      <p class="lead">هذا الباب مغلق. اكتب رمز الدخول.</p>
+      <form id="atbaForm" class="atba-in" novalidate>
+        <input class="field" id="atbaCode" type="password" autocomplete="current-password" placeholder="رمز الدخول" dir="ltr" aria-label="رمز الدخول">
+        <button class="btn" type="submit">ادخل</button>
+      </form>
+    </div>
+
+    <div class="atba-studio" id="atbaStudio" hidden>
+      <header class="ph">
+        <p class="eyebrow en">ATABA · POST STUDIO</p>
+        <h1 class="silver">استوديو عَتَبة</h1>
+        <p class="lead">ارفع الصورة، اكتب الخاطرة، واحفظ المنشور جاهز 1080×1350. الكلمة المفتاحية بين قوسين <span class="en" dir="ltr" style="white-space:nowrap">[&nbsp;]</span> وكل سطر بسطر جديد.</p>
+      </header>
+      <div class="studio2">
+        <div class="ctl2">
+          <label class="drop" id="atbaDrop">
+            <input type="file" id="atbaFile" accept="image/*" hidden>
+            <b>ارفع صورة المنشور</b><span>اضغط هنا أو اسحب الصورة. بعدها حرّكها بالسحب على المعاينة.</span>
+          </label>
+          <label class="fl"><span>النص</span><textarea class="field" id="atbaText" rows="3">ما لا يُقالُ
+[يَكبَرُ] في العتمة.</textarea></label>
+          <p class="note">سطرين أو ثلاثة، كل سطر 2 إلى 4 كلمات. كلمة مفتاحية وحدة بس.</p>
+          <p class="lbl">الثيم</p>
+          <div class="chips" id="atbaTheme" role="radiogroup">
+            <button type="button" class="sv" role="radio" aria-checked="true" data-v="ember">السوداوي</button>
+            <button type="button" class="sv" role="radio" aria-checked="false" data-v="warm">الوسط</button>
+            <button type="button" class="sv" role="radio" aria-checked="false" data-v="gold">الأمل</button>
+          </div>
+          <div class="sliders">
+            <label class="fl"><span>التكبير</span><input type="range" id="atbaZoom" min="1" max="2.5" step="0.01" value="1"></label>
+            <label class="fl"><span>تظليل أعلى الصورة</span><input type="range" id="atbaShade" min="0" max="0.8" step="0.01" value="0.35"></label>
+            <label class="fl"><span>حجم النص</span><input type="range" id="atbaSize" min="0.7" max="1.15" step="0.01" value="1"></label>
+          </div>
+          <label class="tog"><input type="checkbox" id="atbaGuide"> خطوط القالب (أعلى 40% والهوامش)</label>
+          <div class="acts">
+            <button class="btn" type="button" id="atbaSave">احفظ الصورة</button>
+            <button class="btn ghostb" type="button" id="atbaReset">إعادة ضبط الصورة</button>
+          </div>
+          <div class="cap">
+            <p class="lbl">الكابشن الجاهز</p>
+            <pre id="atbaCap"></pre>
+            <div class="acts"><button class="btn ghostb" type="button" id="atbaCopy">نسخ الكابشن</button><span class="note" id="atbaHl"></span></div>
+          </div>
+          <button class="lockbtn" type="button" id="atbaOut">قفل الاستوديو</button>
+        </div>
+        <div class="canvas-wrap"><canvas id="atbaCanvas" width="1080" height="1350" aria-label="معاينة المنشور"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="foot">
@@ -293,5 +350,6 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/ataba.js"></script>
 </body>
 </html>

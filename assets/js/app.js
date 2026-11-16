@@ -100,7 +100,7 @@ $('#liveChip span').textContent = `${D.branches.filter(b => b.open).map(b => b.n
 
 let W = 0, H = 0, cx = 0, cy = 0, orbits = [], clock = 0, last = performance.now(), hovering = false;
 function layout() {
-  const r = scene.getBoundingClientRect(); W = r.width; H = r.height;
+  const r = scene.getBoundingClientRect(); if (!r.width || !r.height) return; W = r.width; H = r.height;
   const small = W < 720;
   cx = W / 2; cy = H * (small ? .46 : .52);
   const rxMax = Math.max(120, Math.min(W / 2 - (small ? 46 : 90), 620));
@@ -291,7 +291,7 @@ if (D.testimonials.length) {
 /* ---------- الأرشيف ---------- */
 const C = D.campaign;
 $('#filesGrid').innerHTML = C.files.map((f, i) => `<button type="button" class="file${f.released ? ' live' : ''}${f.trailer ? ' trailer' : ''}" data-i="${i}" style="animation-delay:${i * 70}ms">
-<span class="fno">${f.trailer ? 'TR' : f.no}</span>
+${f.released && f.poster ? `<span class="fposter" style="background-image:url('${esc(f.poster)}')"></span>` : ''}<span class="fno">${f.trailer ? 'TR' : f.no}</span>
 <span class="ftx"><h3>${f.trailer ? 'التريلر · ' : 'ملف ' + f.no + ' · '}${esc(f.title)}</h3><p class="q">${esc(f.q)}</p></span>
 <span class="fmeta en"><span>${f.trailer ? 'TRAILER' : 'FILE ' + f.no}</span><span>${f.dur}s · 9:16</span></span>
 <span class="stamp">${f.released ? 'مفتوح' : 'سرّي · يُفتح قريباً'}</span></button>`).join('');
@@ -459,7 +459,7 @@ $('#contactLinks').innerHTML = cl.join('');
 $('#yr').textContent = new Date().getFullYear();
 
 /* ---------- التنقل ---------- */
-const VIEWS = ['home', 'works', 'archive', 'order', 'join', 'about'];
+const VIEWS = ['home', 'works', 'archive', 'order', 'join', 'about', 'ataba'];
 function route() {
   const h = location.hash.slice(1);
   const v = VIEWS.includes(h) ? h : 'home';
@@ -472,10 +472,11 @@ function route() {
   if (v !== current) scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
   current = v;
   if (v === 'home') layout();
-  const titles = { home: 'الشبكة', works: 'المعرض', archive: 'الأرشيف', order: 'ابدأ طلبك', join: 'انضم', about: 'عن نوس' };
+  const titles = { home: 'الشبكة', works: 'المعرض', archive: 'الأرشيف', order: 'ابدأ طلبك', join: 'انضم', about: 'عن نوس', ataba: 'عَتَبة' };
   document.title = `نوس · ${titles[v]}`;
 }
 addEventListener('hashchange', route);
+window.NOUS_UI = { toast, copy, esc };
 addEventListener('resize', () => { sizeStars(); if (current === 'home') layout() });
 sizeStars(); route(); layout(); requestAnimationFrame(frame);
 })();
