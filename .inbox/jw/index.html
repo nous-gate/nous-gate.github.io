@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3A1240">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="وصولات جوهر">
+<title>وصولات جوهر</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" id="appleIcon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Readex+Pro:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem('jw.theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#orders" aria-label="الطلبات">
+    <svg class="mk" viewBox="10 16 100 118" aria-hidden="true"><path d="M44 47 V38 a16 16 0 0 1 32 0 V47" fill="none" stroke="currentColor" stroke-width="6.5"/><g stroke="var(--plum)" stroke-width="3" stroke-linejoin="round"><polygon points="16,66 40,46 50,66" fill="currentColor"/><polygon points="40,46 80,46 70,66 50,66" fill="var(--gold)"/><polygon points="80,46 104,66 70,66" fill="currentColor"/><polygon points="16,66 50,66 60,130" fill="currentColor"/><polygon points="50,66 70,66 60,130" fill="currentColor"/><polygon points="70,66 104,66 60,130" fill="currentColor"/></g></svg>
+    <span><small id="storeLabel">متجر</small><b>جوهر</b></span>
+  </a>
+  <div class="tr"><span class="ttl" id="viewTitle">الطلبات</span><button class="theme" id="themeBtn" type="button" aria-label="تبديل الوضع الليلي والنهاري"></button></div>
+</header>
+
+<main id="app"></main>
+
+<nav class="tabs" aria-label="التنقل">
+  <a href="#orders" data-tab="orders"><svg viewBox="0 0 24 24"><path d="M5 4h14v16l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 9h6M9 13h6"/></svg>الطلبات</a>
+  <a href="#new" data-tab="new" class="add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>طلب جديد</a>
+  <a href="#delivered" data-tab="delivered"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M8 12l3 3 5-6"/></svg>المسلّمة</a>
+  <a href="#settings" data-tab="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>الإعدادات</a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
